@@ -5,6 +5,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 public class ApplicationTestClass{
@@ -93,6 +94,7 @@ public class ApplicationTestClass{
                 driver.findElement(By.id("com.example.recipehelper:id/log_in_button"));
         loginButton.click();
     }
+    @AfterClass
     public void teardown(){
         driver.quit();
     }}
