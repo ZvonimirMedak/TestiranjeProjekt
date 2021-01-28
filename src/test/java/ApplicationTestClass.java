@@ -12,7 +12,7 @@ public class ApplicationTestClass{
     @BeforeClass()
     public void setUp() throws MalformedURLException{
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app", "C:\\Users\\zvoni\\Desktop\\recipe\\app-debug.apk");
+        capabilities.setCapability("app", "C:\\Users\\zvoni\\IdeaProjects\\testAplikacije\\testingApk\\app-debug.apk");
         capabilities.setCapability("VERSION", "9.0");
         capabilities.setCapability("deviceName","emulator");
         capabilities.setCapability("platformName","Android");
@@ -34,7 +34,7 @@ public class ApplicationTestClass{
         doneButton.click();
     }
 
-    @Test(dependsOnMethods = "testLoginBeforeRegistration", groups = "auth")
+    @Test(dependsOnMethods = "testRegister", groups = "auth")
     public void testLoginAfterRegistration() throws Exception {
         login();
     }
@@ -52,7 +52,8 @@ public class ApplicationTestClass{
 
     @Test(dependsOnMethods = "testSearch")
     public void testSearchResultsOpen() throws Exception {
-        MobileElement firstElement = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView");
+        MobileElement firstElement = (MobileElement) driver
+                .findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.view.ViewGroup/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView");
         firstElement.click();
     }
 
@@ -88,9 +89,9 @@ public class ApplicationTestClass{
         MobileElement passwordField= (MobileElement)
                 driver.findElement(By.id("com.example.recipehelper:id/password_edit"));
         passwordField.sendKeys("user");
-        MobileElement e13=(MobileElement)
+        MobileElement loginButton=(MobileElement)
                 driver.findElement(By.id("com.example.recipehelper:id/log_in_button"));
-        e13.click();
+        loginButton.click();
     }
     public void teardown(){
         driver.quit();
